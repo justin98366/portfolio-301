@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
 
+    <script id="article-template" type="text-x-handlebars-template">
+    <header>
+      <h1>{{name}}</h1>
+      <div class="byline">
+        <address><a href={{link}}><img src={{picture}}></a></address>
+      </div>
+    </header>
+    <section class="project-description">{{{description}}}</section>
+
+    </script>
+
   </head>
   <body>
     <header class="site-header clearfix">
@@ -31,21 +42,10 @@
     </div>
   </header>
   <main>
-    <section id="articles" class="tab-content">
-
-      <article class="template" data-category="cat">
-        <header>
-          <h1>Title</h1>
-          <div class="byline">
-            <address><a href="">Project Name</a></address>
-          </div>
-        </header>
-        <section class="project-description"></section>
-      </article>
-    </section>
+    <section id="articles" class="tab-content"></section>
     <section id="about" class="tab-content">
         <header>
-          A little bit about me! :)
+          <h3>A little bit about me! :)</h3>
         </header>
         <section>
           <h1>Some of my intrests:</h1>
@@ -53,10 +53,12 @@
             <li>Coding</li>
             <li>Sharing what I've learned</li>
             <li>Hanging with my family</li>
+            <li>Playing video games</li>
           </ul>
         </section>
       </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
     <script src="scripts/projectList.js"></script>
     <script src="scripts/project.js"></script>
     <script src="scripts/projectView.js"></script>
