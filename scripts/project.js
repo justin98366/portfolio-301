@@ -1,5 +1,5 @@
 'use strict'
-
+//take this off global scope -- Matt
 var projects = [];
 
 function Project (projectData){
@@ -8,10 +8,10 @@ function Project (projectData){
   this.link = projectData.link;
   this.description = projectData.description;
 }
-
+//change var to let -- Matt
 Project.prototype.toHtml = function() {
-  var template = $('#article-template').html();
-  var templateRender = Handlebars.compile(template);
+  let template = $('#article-template').html();
+  let templateRender = Handlebars.compile(template);
   return templateRender(this);
 };
 

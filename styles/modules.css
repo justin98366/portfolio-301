@@ -69,4 +69,14 @@
     color: #29506D;
   }
 
+/*helped me with aligning my pics and resizing them -- Matt*/
+  .project{
+    display: inline-block;
+    margin-left: 1.6%;
+    margin-right: 1.6%;
+    width: 29.9%;
+
+
+  }
+
 }
