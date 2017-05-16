@@ -1,6 +1,6 @@
 'use strict'
 
-var projectView = {};
+const projectView = {};
 
 projectView.handleMainNav = function() {
   $('.main-nav').on('click', '.tab', function() {
@@ -11,4 +11,10 @@ projectView.handleMainNav = function() {
   $('.main-nav .tab:eq(1)').click();
 };
 
-$(document).ready(function() {projectView.handleMainNav()});
+// $(document).ready(function() {projectView.handleMainNav()});
+projectView.initPage = function(){
+  Project.all.forEach(function(article){
+    $('#articles').append(article.toHtml());
+  })
+  projectView.handleMainNav();
+}
