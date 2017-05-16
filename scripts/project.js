@@ -1,6 +1,6 @@
 'use strict'
 //take this off global scope -- Matt
-var projects = [];
+// var projects = [];
 
 function Project (projectData){
   this.name = projectData.name;
@@ -8,17 +8,39 @@ function Project (projectData){
   this.link = projectData.link;
   this.description = projectData.description;
 }
+
+Project.all = [];
 //change var to let -- Matt
 Project.prototype.toHtml = function() {
   let template = $('#article-template').html();
   let templateRender = Handlebars.compile(template);
   return templateRender(this);
 };
+Project.loadAll = function(rawData){
 
-projectInfo.forEach(function(articleObject) {
-  projects.push(new Project(articleObject));
-});
+  rawData.forEach(function(projectObject) {
+    Project.all.push(new Project(projectObject));
+  })
 
-projects.forEach(function(article){
-  $('#articles').append(article.toHtml());
-});
+}
+
+Project.fetchAll = function() {
+  if (localStorage.rawData) {
+
+    Project.loadAll(JSON.parse(localStorage.rawData));
+
+    projectView.initPage(localStorage.rawData);
+  } else {
+
+    $.getJSON('/data/projectInfo.json')
+      .then(function(data){
+        localStorage.rawData = JSON.stringify(data);
+        Project.loadAll(data);
+
+      },
+      function(err){
+        console.log(err);
+      })
+    projectView.initPage();
+  }
+}
