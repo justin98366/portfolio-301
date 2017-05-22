@@ -13,8 +13,8 @@ projectView.handleMainNav = function() {
 
 // $(document).ready(function() {projectView.handleMainNav()});
 projectView.initPage = function(){
-  Project.all.forEach(function(article){
-    $('#articles').append(article.toHtml());
+  Project.all.forEach(function(project){
+    $('#articles').append(project.toHtml());
   })
   projectView.handleMainNav();
 }

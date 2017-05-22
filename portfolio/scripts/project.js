@@ -36,11 +36,12 @@ Project.fetchAll = function() {
       .then(function(data){
         localStorage.rawData = JSON.stringify(data);
         Project.loadAll(data);
+        projectView.initPage(data);
 
       },
       function(err){
         console.log(err);
       })
-    projectView.initPage();
+
   }
 }
