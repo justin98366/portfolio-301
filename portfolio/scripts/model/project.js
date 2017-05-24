@@ -1,6 +1,4 @@
 'use strict'
-//take this off global scope -- Matt
-// var projects = [];
 var app = app || {};
 
 (function(module){
@@ -12,7 +10,7 @@ var app = app || {};
   }
 
   Project.all = [];
-  //change var to let -- Matt
+
   Project.prototype.toHtml = function() {
     let template = $('#article-template').html();
     let templateRender = Handlebars.compile(template);
@@ -23,9 +21,7 @@ var app = app || {};
     Project.all = rawData.map(function(projectObject){
       return new Project(projectObject);
     })
-    // rawData.forEach(function(projectObject) {
-    //   Project.all.push(new Project(projectObject));
-    // })
+
     console.log(`My descriptions combined make up ${Project.all.map(function(project){
       return project.description.split(' ').length;
     }).reduce(function(acc, curr){
