@@ -51,5 +51,6 @@ var app = app || {};
 
     }
   }
+
   app.Project = Project;
 })(app)
