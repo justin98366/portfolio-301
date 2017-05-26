@@ -12,9 +12,9 @@ var app = app || {};
   Project.all = [];
 
   Project.prototype.toHtml = function() {
-    let template = $('#article-template').html();
-    let templateRender = Handlebars.compile(template);
-    return templateRender(this);
+    let template = Handlebars.compile($('#article-template').text());
+
+    return template(this);
   };
   Project.loadAll = function(rawData){
 
@@ -22,11 +22,11 @@ var app = app || {};
       return new Project(projectObject);
     })
 
-    console.log(`My descriptions combined make up ${Project.all.map(function(project){
-      return project.description.split(' ').length;
-    }).reduce(function(acc, curr){
-      return acc + curr;
-    })} words total`);
+    // console.log(`My descriptions combined make up ${Project.all.map(function(project){
+    //   return project.description.split(' ').length;
+    // }).reduce(function(acc, curr){
+    //   return acc + curr;
+    // })} words total`);
 
   }
 
@@ -35,14 +35,14 @@ var app = app || {};
 
       Project.loadAll(JSON.parse(localStorage.rawData));
 
-      projectView.initPage(localStorage.rawData);
+      app.projectView.initPage();
     } else {
 
       $.getJSON('./data/projectInfo.json')
         .then(function(data){
-          localStorage.rawData = JSON.stringify(data);
           Project.loadAll(data);
-          projectView.initPage();
+          localStorage.rawData = JSON.stringify(data);
+          app.projectView.initPage();
 
         },
         function(err){
@@ -52,5 +52,5 @@ var app = app || {};
     }
   }
 
-  app.Project = Project;
+  module.Project = Project;
 })(app)
