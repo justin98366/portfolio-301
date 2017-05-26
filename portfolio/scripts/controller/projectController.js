@@ -5,9 +5,9 @@ var app = app || {};
   const projectController = {};
 
   projectController.projectPageInit = function() {
-    app.Project.fetchAll(projectView.initPage);
-    $('.tab-content').hide();
-    $('#articles').fadeIn();
+    app.Project.fetchAll(app.projectView.initPage);
+    $('main > section').hide();
+    $('#articles').show();
 
   }
 
