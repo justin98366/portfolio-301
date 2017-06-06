@@ -31,7 +31,9 @@ var app = app || {};
   }
 
   Project.fetchAll = function() {
+    localStorage.clear();
     if (localStorage.rawData) {
+
 
       Project.loadAll(JSON.parse(localStorage.rawData));
 
